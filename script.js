@@ -10,6 +10,9 @@ const loadAllProduct = () => {
 const searchCocktail = () => {
     const CocktailName = document.getElementById("search-field").value;
     if (CocktailName === "") return;
+
+    document.getElementById("product-container").innerHTML = "";
+
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${CocktailName}`)
         .then((res) => res.json())
         .then((data) => {
@@ -33,9 +36,10 @@ const displayProduct = (products) => {
         <h5>${product.strDrink}</h5>
         <h3>Category: ${product.strCategory}</h3>
         <p>${product.strInstructions}</p>
-        <button onclick="singleProduct('${product.idDrink}')">Details</button>
-        <button onclick="handleAddToCart('${product.strDrink}','${product.strDrinkThumb
-            }')" >Add To Cart</button>
+        <div class = "Details-Cart">
+        <button style="height: 50px; width: 150px; background-color:rgb(54, 56, 57); color: white; border: none; border-radius: 5px;" onclick="singleProduct('${product.idDrink}')">Details</button>
+        <button style="height: 50px; width: 150px; background-color:rgb(54, 56, 57); color: white; border: none; border-radius: 5px;"onclick="handleAddToCart('${product.strDrink}','${product.strDrinkThumb
+            }')" >Add To Cart</button></div>
         `;
         productContainer.appendChild(div);
     });
