@@ -1,8 +1,0 @@
-var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-let max = numbers[0];
-numbers.forEach(num => {
-    if (num > max) max = num;
-});
-
-console.log(max);
